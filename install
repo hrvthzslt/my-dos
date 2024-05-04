@@ -1,0 +1,45 @@
+#!/bin/sh
+
+install_dependencies() {
+  sudo apt update
+  sudo apt install libsdl2-2.0-0 libsdl2-net-2.0-0 libopusfile0
+}
+
+get_source() {
+  temp_path=/tmp/dosbox
+
+  wget -P $temp_path https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.81.0/dosbox-staging-linux-v0.81.0.tar.xz
+  tar -xvf $temp_path/dosbox-staging-linux-v0.81.0.tar.xz -C $temp_path
+
+  sudo mv -f $temp_path/dosbox-staging-linux-v0.81.0 /opt/dosbox-staging
+
+  rm -rf $temp_path
+}
+
+link_executeable() {
+  sudo ln -s /opt/dosbox-staging/dosbox /usr/local/bin/dosbox
+}
+
+debian_check() {
+  if apt >/dev/null 2>&1; then
+    echo "OS Family not supported."
+    exit 1
+  fi
+
+}
+
+install_dosbox() {
+  if ! command -v dosbox >/dev/null; then
+    install_dependencies
+    get_source
+    link_executeable
+  fi
+}
+
+main() {
+  debian_check
+  install_dosbox
+  exit 0
+}
+
+main

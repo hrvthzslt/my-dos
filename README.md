@@ -4,16 +4,10 @@ My Dosbox setup for Debian based distros
 
 ## Todo
 
-- [ ] Install dosbox staging
+- [x] Install dosbox staging
 
-  - [ ] Download to `opt`
-  - [ ] Symlink executable to `/usr/local/bin`
-
-- [ ] Create dos folder in the project
-
-  - [ ] Symbolic link to `~/dos`
-  - [ ] Add to `.gitignore`
-  - [ ] Create game directory
+  - [x] Download to `opt`
+  - [x] Symlink executable to `/usr/local/bin`
 
 - [ ] Create a configuration file
 
@@ -21,6 +15,12 @@ My Dosbox setup for Debian based distros
   - [ ] Splash
   - [ ] Mount dos folder in dosbox
   - [ ] Figure out midi
+
+- [ ] Create dos folder in the project
+
+  - [ ] Symbolic link to `~/dos`
+  - [ ] Add to `.gitignore`
+  - [ ] Create game directory
 
 - [ ] Add programs to dosbox
 
