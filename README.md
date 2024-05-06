@@ -31,3 +31,5 @@ My Dosbox setup for Debian based distros
 
   - [ ] Mounting in dosbox
   - [ ] Mounting a mounted iso from linux at startup
+
+- [ ] uninstall
