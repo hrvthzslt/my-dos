@@ -11,15 +11,14 @@ My Dosbox setup for Debian based distros
 
 - [ ] Create a configuration file
 
-  - [ ] Decide autoexec or config file
-  - [ ] Splash
-  - [ ] Mount dos folder in dosbox
+  - [x] Splash
+  - [x] Mount dos folder in dosbox
   - [ ] Figure out midi
 
 - [ ] Create dos folder in the project
 
-  - [ ] Symbolic link to `~/dos`
-  - [ ] Add to `.gitignore`
+  - [x] Symbolic link to `~/dos`
+  - [x] Add to `.gitignore`
   - [ ] Create game directory
 
 - [ ] Add programs to dosbox

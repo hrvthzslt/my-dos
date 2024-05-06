@@ -36,9 +36,23 @@ install_dosbox() {
   fi
 }
 
+link_config() {
+  if [ ! -d ~/.dosbox ]; then
+    mkdir ~/.dosbox
+  fi
+
+  ln -snf "$PWD"/dosbox/dosbox-staging.conf ~/.config/dosbox/dosbox-staging.conf
+}
+
+link_drive() {
+  ln -snf "$PWD"/dos ~/dos
+}
+
 main() {
   debian_check
   install_dosbox
+  link_config
+  link_drive
   exit 0
 }
 
