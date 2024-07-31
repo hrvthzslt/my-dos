@@ -1,0 +1,23 @@
+#!/bin/sh
+
+print_message() {
+  printf "\033[0;32m%s\033[0m\n" "$1"
+}
+
+main() {
+  print_message "Unlinking binary."
+  sudo rm /usr/local/bin/dosbox
+
+  print_message "Deleting Dosbox."
+  sudo rm -rf /opt/dosbox-staging
+
+  print_message "Unlinking Dosbox configuration."
+  rm -rf ~/.config/dosbox
+
+  print_message "Unlinking dos folder."
+  rm -rf ~/dos
+
+  exit 0
+}
+
+main

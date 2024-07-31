@@ -1,5 +1,13 @@
 #!/bin/sh
 
+print_error() {
+  printf "\033[0;31m%s\033[0m\n" "$1"
+}
+
+print_message() {
+  printf "\033[0;32m%s\033[0m\n" "$1"
+}
+
 install_dependencies() {
   sudo apt update
   sudo apt install libsdl2-2.0-0 libsdl2-net-2.0-0 libopusfile0
@@ -22,7 +30,7 @@ link_executeable() {
 
 debian_check() {
   if apt >/dev/null 2>&1; then
-    echo "OS Family not supported."
+    print_error "OS Family not supported."
     exit 1
   fi
 
@@ -30,13 +38,17 @@ debian_check() {
 
 install_dosbox() {
   if ! command -v dosbox >/dev/null; then
+    print_message "Installing Dosbox."
     install_dependencies
     get_source
     link_executeable
+  else
+    print_message "Dosbox is already installed."
   fi
 }
 
 link_config() {
+  print_message "Linking Dosbox configuration."
   if [ ! -d ~/.config/dosbox ]; then
     mkdir ~/.config/dosbox
   fi
@@ -45,6 +57,7 @@ link_config() {
 }
 
 link_drive() {
+  print_message "Linking dos folder to home."
   ln -snf "$PWD"/dos ~/dos
 }
 

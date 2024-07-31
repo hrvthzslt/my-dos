@@ -19,7 +19,7 @@ My Dosbox setup for Debian based distros
 
   - [x] Symbolic link to `~/dos`
   - [x] Add to `.gitignore`
-  - [ ] Create game directory
+  - [x] Create game directory
 
 - [ ] Add programs to dosbox
 
@@ -29,7 +29,6 @@ My Dosbox setup for Debian based distros
 
 - [ ] Decide mounting method
 
-  - [ ] Mounting in dosbox
-  - [ ] Mounting a mounted iso from linux at startup
+  - [x] Mounting in dosbox, in separated scripts
 
-- [ ] uninstall
+- [x] uninstall
