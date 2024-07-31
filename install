@@ -37,8 +37,8 @@ install_dosbox() {
 }
 
 link_config() {
-  if [ ! -d ~/.dosbox ]; then
-    mkdir ~/.dosbox
+  if [ ! -d ~/.config/dosbox ]; then
+    mkdir ~/.config/dosbox
   fi
 
   ln -snf "$PWD"/dosbox/dosbox-staging.conf ~/.config/dosbox/dosbox-staging.conf
