@@ -1,5 +1,0 @@
-IF EXIST PRINCE.EXE (
-    PRINCE.EXE
-) ELSE (
-    ECHO "PRINCE.EXE is missing!"
-)
