@@ -47,6 +47,21 @@ install_dosbox() {
   fi
 }
 
+install_dn() {
+  dn_path=dos/PROGS/DN
+
+  if [ -f $dn_path/DN.COM ]; then
+    print_message "Dos Navigator already installed."
+    return
+  fi
+
+  print_message "Installing Dos Navigator."
+
+  wget -P $dn_path https://www.ritlabs.com/download/dn/dn151.zip
+  unzip $dn_path/dn151.zip -d $dn_path
+  rm $dn_path/dn151.zip
+}
+
 link_config() {
   print_message "Linking Dosbox configuration."
   if [ ! -d ~/.config/dosbox ]; then
@@ -64,6 +79,7 @@ link_drive() {
 main() {
   debian_check
   install_dosbox
+  install_dn
   link_config
   link_drive
   exit 0
