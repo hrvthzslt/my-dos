@@ -65,7 +65,7 @@ install_dn() {
 install_edit() {
   edit_path=dos/PROGS/EDIT
 
-  if [ -f $edit_path/EDIT.exe ]; then
+  if [ -f $edit_path/EDIT.EXE ]; then
     print_message "Dos Navigator already installed."
     return
   fi
