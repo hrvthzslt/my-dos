@@ -62,6 +62,21 @@ install_dn() {
   rm $dn_path/dn151.zip
 }
 
+install_edit() {
+  edit_path=dos/PROGS/EDIT
+
+  if [ -f $edit_path/EDIT.exe ]; then
+    print_message "Dos Navigator already installed."
+    return
+  fi
+
+  print_message "Installing Edit."
+
+  wget -P $edit_path https://archive.org/download/freedos_edit_09a_/EDIT.zip
+  unzip $edit_path/EDIT.zip -d $edit_path
+  rm $edit_path/EDIT.zip
+}
+
 link_config() {
   print_message "Linking Dosbox configuration."
   if [ ! -d ~/.config/dosbox ]; then
@@ -80,6 +95,7 @@ main() {
   debian_check
   install_dosbox
   install_dn
+  install_edit
   link_config
   link_drive
   exit 0
