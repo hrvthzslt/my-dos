@@ -47,34 +47,22 @@ install_dosbox() {
   fi
 }
 
-install_dn() {
-  dn_path=dos/PROGS/DN
+install_dos_program() {
+  program_name=$1
+  program_path=dos/PROGS/$program_name
+  program_exe=$2
+  download_url=$3
 
-  if [ -f $dn_path/DN.COM ]; then
-    print_message "Dos Navigator already installed."
+  if [ -f "$program_path/$program_exe" ]; then
+    print_message "$program_name already installed."
     return
   fi
 
-  print_message "Installing Dos Navigator."
+  print_message "Installing $program_name."
 
-  wget -P $dn_path https://www.ritlabs.com/download/dn/dn151.zip
-  unzip $dn_path/dn151.zip -d $dn_path
-  rm $dn_path/dn151.zip
-}
-
-install_edit() {
-  edit_path=dos/PROGS/EDIT
-
-  if [ -f $edit_path/EDIT.EXE ]; then
-    print_message "Dos Navigator already installed."
-    return
-  fi
-
-  print_message "Installing Edit."
-
-  wget -P $edit_path https://archive.org/download/freedos_edit_09a_/EDIT.zip
-  unzip $edit_path/EDIT.zip -d $edit_path
-  rm $edit_path/EDIT.zip
+  wget "$download_url" -O "$program_path/$program_name.zip"
+  unzip "$program_path/$program_name.zip" -d "$program_path"
+  rm "$program_path/$program_name.zip"
 }
 
 link_config() {
@@ -94,8 +82,8 @@ link_drive() {
 main() {
   debian_check
   install_dosbox
-  install_dn
-  install_edit
+  install_dos_program "DN" "DN.COM" "https://www.ritlabs.com/download/dn/dn151.zip"
+  install_dos_program "EDIT" "EDIT.EXE" "https://archive.org/download/freedos_edit_09a_/EDIT.zip"
   link_config
   link_drive
   exit 0
