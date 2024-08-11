@@ -11,3 +11,7 @@ install: # Install dosbox and set up configuration
 .PHONY: uninstall
 uninstall: # Remove dosbox and configuration
 	scripts/uninstall
+
+.PHONY: add-game
+add-game: # Add game folder: make add-game name=game_name
+	scripts/add_game $(name)

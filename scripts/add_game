@@ -1,0 +1,16 @@
+#!/bin/sh
+
+main() {
+  folder=$1
+  path=~/dos/games/"$folder"
+  echo "$path"
+  mkdir path
+
+  {
+    echo "*"
+    echo "!.gitignore"
+    echo "!run.bat"
+  } >"$path/.gitignore"
+
+  echo "runner $folder.exe \"$folder\"" > "$path/run.bat"
+}
