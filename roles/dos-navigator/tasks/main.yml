@@ -1,0 +1,21 @@
+---
+- name: "Setup dos navigator"
+  tags: dos-navigator
+  block:
+    - name: "Check dn.com"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/dn/DN.COM"
+      register: dn_exe
+
+    - name: "Download dos navigator"
+      ansible.builtin.get_url:
+        url: "https://www.ritlabs.com/download/dn/dn151.zip"
+        dest: "/tmp"
+      when: not dn_exe.stat.exists
+
+    - name: "Unarchive dos navigator"
+      ansible.builtin.unarchive:
+        src: "/tmp/dn151.zip"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/dn"
+      become: yes
+      when: not dn_exe.stat.exists

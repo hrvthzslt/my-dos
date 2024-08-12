@@ -4,3 +4,7 @@
   roles:
     - dependencies
     - dosbox-staging
+    - edit
+    - dos-navigator
+    - dosfetch
+    - vim

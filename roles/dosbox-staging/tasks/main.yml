@@ -29,6 +29,10 @@
       become: yes
       when: dosbox_version.rc != 0
 
+    - name: create configuration directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/dosbox"
+
     - name: symlink configuration
       ansible.builtin.file:
         src: "{{ role_path }}/files/dosbox-staging.conf"

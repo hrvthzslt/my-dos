@@ -1,0 +1,8 @@
+---
+- name: "Setup dosfetch"
+  tags: dosfetch
+  block:
+    - name: "Download dosfetch"
+      ansible.builtin.get_url:
+        url: "https://github.com/leahneukirchen/dosfetch/raw/master/dosfetch.exe"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/df/df.exe"

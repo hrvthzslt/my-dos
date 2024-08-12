@@ -1,0 +1,21 @@
+---
+- name: "Setup edit"
+  tags: edit
+  block:
+    - name: "Check edit.exe"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/edit/EDIT.EXE"
+      register: edit_exe
+
+    - name: "Download edit"
+      ansible.builtin.get_url:
+        url: "https://archive.org/download/freedos_edit_09a_/EDIT.zip"
+        dest: "/tmp"
+      when: not edit_exe.stat.exists
+
+    - name: "Unarchive edit"
+      ansible.builtin.unarchive:
+        src: "/tmp/EDIT.zip"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/edit"
+      become: yes
+      when: not edit_exe.stat.exists
