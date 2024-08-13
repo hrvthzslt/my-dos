@@ -1,0 +1,6 @@
+---
+- name: Uninstall dosbox
+  hosts: localhost
+  roles:
+    - uninstall
+    - cleanup

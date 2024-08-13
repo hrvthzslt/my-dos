@@ -1,0 +1,54 @@
+---
+- name: download dosbox staging
+  tags: dosbox
+  block:
+    - name: check if installed
+      ansible.builtin.command: dosbox --version
+      register: dosbox_version
+      ignore_errors: yes
+      changed_when: false
+
+    - name: download dosbox staging
+      ansible.builtin.get_url:
+        url: https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.81.0/dosbox-staging-linux-v0.81.0.tar.xz
+        dest: /tmp/dosbox-staging-linux-v0.81.0.tar.xz
+      when: dosbox_version.rc != 0
+
+    - name: extract dosbox staging
+      ansible.builtin.unarchive:
+        src: /tmp/dosbox-staging-linux-v0.81.0.tar.xz
+        dest: /opt/
+      become: yes
+      when: dosbox_version.rc != 0
+
+    - name: symlink binary
+      ansible.builtin.file:
+        src: /opt/dosbox-staging-linux-v0.81.0/dosbox
+        dest: /usr/local/bin/dosbox
+        state: link
+      become: yes
+      when: dosbox_version.rc != 0
+
+    - name: create configuration directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/dosbox"
+        state: directory
+
+    - name: symlink configuration
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/dosbox-staging.conf"
+        dest: "{{ ansible_env.HOME }}/.config/dosbox/dosbox-staging.conf"
+        state: link
+        force: yes
+
+    - name: create dos directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/dos"
+        state: directory
+
+    - name: symlink c drive
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/c"
+        dest: "{{ ansible_env.HOME }}/dos/c"
+        state: link
+        force: yes

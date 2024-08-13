@@ -1,0 +1,10 @@
+---
+- name: Install Dosbox and Dos programs and set up config
+  hosts: localhost
+  roles:
+    - dependencies
+    - dosbox-staging
+    - edit
+    - dos-navigator
+    - dosfetch
+    - vim

@@ -6,11 +6,11 @@ help:
 
 .PHONY: install
 install: # Install dosbox and set up configuration
-	scripts/install
+	ansible-playbook install.yml --ask-become
 
 .PHONY: uninstall
 uninstall: # Remove dosbox and configuration
-	scripts/uninstall
+	ansible-playbook uninstall.yml --ask-become
 
 .PHONY: add-game
 add-game: # Add game folder: make add-game name=game_name

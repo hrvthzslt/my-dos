@@ -1,0 +1,22 @@
+---
+- name: "Remove dosbox"
+  tags: uninstall
+  block:
+    - name: "Unlink dosbox binary"
+      ansible.builtin.file:
+        path: "/usr/local/bin/dosbox"
+        state: absent
+      become: yes
+
+    - name: "Remove dosbox"
+      ansible.builtin.file:
+        path: "/opt/dosbox-staging-linux-v0.81.0"
+        state: absent
+      become: yes
+
+    - name: "Remove dosbox config"
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/dosbox"
+        state: absent
+
+

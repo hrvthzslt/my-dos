@@ -1,0 +1,22 @@
+---
+- name: cleanup progs folders
+  ansible.builtin.find:
+    path: "{{ item }}"
+    file_type: file
+    recurse: yes
+    excludes:
+      - ".gitignore"
+      - "DN.CFG"
+  loop:
+    - "{{ ansible_env.HOME }}/dos/c/progs/df"
+    - "{{ ansible_env.HOME }}/dos/c/progs/dn"
+    - "{{ ansible_env.HOME }}/dos/c/progs/vim"
+    - "{{ ansible_env.HOME }}/dos/c/progs/edit"
+  register: progs_files_to_remove
+
+- name: Delete files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items: "{{ progs_files_to_remove.results | map(attribute='files') | sum(start=[]) | map(attribute='path') | list }}"
+  become: yes
