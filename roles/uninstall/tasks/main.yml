@@ -4,7 +4,6 @@
   block:
     - name: "Unlink dosbox binary"
       ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/dos/c/progs/db/dosbox.exe"
         path: "/usr/local/bin/dosbox"
         state: absent
       become: yes
