@@ -32,6 +32,7 @@
     - name: create configuration directory
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.config/dosbox"
+        state: directory
 
     - name: symlink configuration
       ansible.builtin.file:

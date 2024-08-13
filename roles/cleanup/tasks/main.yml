@@ -16,6 +16,7 @@
 
 - name: Delete files
   file:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     state: absent
-  with_items: "{{ progs_files_to_remove['files'] }}"
+  with_items: "{{ progs_files_to_remove.results | map(attribute='files') | sum(start=[]) | map(attribute='path') | list }}"
+  become: yes
