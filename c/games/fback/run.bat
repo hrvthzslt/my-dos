@@ -1,3 +1,3 @@
 @echo off
 
-runner FB.COM "Flashback Abandonware"
+runner FB.COM "Flashback"
