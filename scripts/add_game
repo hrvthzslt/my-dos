@@ -1,10 +1,11 @@
 #!/bin/sh
 
 main() {
-  folder=$1
-  path=~/dos/games/"$folder"
+  printf "Enter game folder name: "
+  read -r folder
+  path=~/dos/c/games/"$folder"
   echo "$path"
-  mkdir path
+  mkdir -p "$path"
 
   {
     echo "*"
@@ -12,5 +13,7 @@ main() {
     echo "!run.bat"
   } >"$path/.gitignore"
 
-  echo "runner $folder.exe \"$folder\"" > "$path/run.bat"
+  # echo "runner $folder.exe \"$folder\"" >"$path/run.bat"
 }
+
+main
