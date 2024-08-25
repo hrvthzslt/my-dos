@@ -1,0 +1,21 @@
+---
+- name: "Setup dosshell"
+  tags: dosshell
+  block:
+    - name: "Check DOSSHELL.EXE"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/dosshell/DOSSHELL.EXE"
+      register: ds_exe
+
+    - name: "Download dosshell"
+      ansible.builtin.get_url:
+        url: "https://archive.org/download/msdos_dosshell/dosshell.zip"
+        dest: "/tmp"
+      when: not ds_exe.stat.exists
+
+    - name: "Unarchive dosshell"
+      ansible.builtin.unarchive:
+        src: "/tmp/dosshell.zip"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/dosshell"
+      become: yes
+      when: not ds_exe.stat.exists

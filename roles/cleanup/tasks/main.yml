@@ -10,6 +10,7 @@
   loop:
     - "{{ ansible_env.HOME }}/dos/c/progs/df"
     - "{{ ansible_env.HOME }}/dos/c/progs/dn"
+    - "{{ ansible_env.HOME }}/dos/c/progs/dosshell"
     - "{{ ansible_env.HOME }}/dos/c/progs/vim"
     - "{{ ansible_env.HOME }}/dos/c/progs/edit"
   register: progs_files_to_remove

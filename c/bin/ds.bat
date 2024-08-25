@@ -1,0 +1,3 @@
+@echo off
+
+c:\PROGS\DOSSHELL\DOSSHELL.EXE %1
