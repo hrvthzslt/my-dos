@@ -2,9 +2,9 @@
 
 My tribute for my own early days of computing, creating a x86 experience in **dosbox staging**, for **Debian** based distributions, automated with **Ansible**.
 
-![Dos screen](assets/DF.png)
+![Dos screen](assets/df-rs.png)
 
-![Dos Navigator](assets/DN.png)
+![Dos Navigator](assets/dn-rs.png)
 
 ## Install
 
