@@ -8,22 +8,16 @@
       ignore_errors: yes
       changed_when: false
 
-    - name: download dosbox staging
-      ansible.builtin.get_url:
-        url: https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.81.0/dosbox-staging-linux-v0.81.0.tar.xz
-        dest: /tmp/dosbox-staging-linux-v0.81.0.tar.xz
-      when: dosbox_version.rc != 0
-
-    - name: extract dosbox staging
+    - name: download and unarchive
       ansible.builtin.unarchive:
-        src: /tmp/dosbox-staging-linux-v0.81.0.tar.xz
+        src: https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.82.0/dosbox-staging-linux-x86_64-v0.82.0.tar.xz
         dest: /opt/
+        remote_src: yes
       become: yes
-      when: dosbox_version.rc != 0
 
     - name: symlink binary
       ansible.builtin.file:
-        src: /opt/dosbox-staging-linux-v0.81.0/dosbox
+        src: /opt/dosbox-staging-linux-x86_64-0.82.0-9df43/dosbox
         dest: /usr/local/bin/dosbox
         state: link
       become: yes
