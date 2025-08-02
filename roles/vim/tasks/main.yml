@@ -23,3 +23,21 @@
       ansible.builtin.unarchive:
         src: "{{ ansible_env.HOME }}/dos/c/progs/vim/vim/vim73/csdpmi4b.zip"
         dest: "{{ ansible_env.HOME }}/dos/c/progs/vim/vim/vim73"
+      when: not vim_exe.stat.exists
+
+    - name: "Check vim runtime files"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/vim/vim/vim73/doc"
+      register: vim_runtime
+
+    - name: "Download vim runtime files"
+      ansible.builtin.get_url:
+        url: "https://ftp.nluug.nl/pub/vim/pc/vim73rt.zip"
+        dest: "/tmp"
+      when: not vim_runtime.stat.exists
+
+    - name: "Unarchive vim runtime files"
+      ansible.builtin.unarchive:
+        src: "/tmp/vim73rt.zip"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/vim"
+      when: not vim_runtime.stat.exists
