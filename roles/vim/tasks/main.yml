@@ -17,11 +17,9 @@
       ansible.builtin.unarchive:
         src: "/tmp/vim73_46d32.zip"
         dest: "{{ ansible_env.HOME }}/dos/c/progs/vim"
-      become: yes
       when: not vim_exe.stat.exists
 
     - name: "Unarchive csdpmi4b"
       ansible.builtin.unarchive:
         src: "{{ ansible_env.HOME }}/dos/c/progs/vim/vim/vim73/csdpmi4b.zip"
         dest: "{{ ansible_env.HOME }}/dos/c/progs/vim/vim/vim73"
-      become: yes
