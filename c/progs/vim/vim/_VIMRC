@@ -95,17 +95,6 @@ nnoremap <leader>sf :find<Space>
 nnoremap <leader>sg :vimgrep // **<Left><Left><Left><Left>
 nnoremap gr :vimgrep /<C-R><C-W>/ **<CR>:copen<CR>
 
-function! GoToTagOrDefinition()
-    try
-        execute 'tag ' . expand('<cword>')
-    catch
-        execute 'normal! gd'
-    endtry
-endfunction
-nnoremap gd :call GoToTagOrDefinition()<CR>
-
-nnoremap <leader>t :execute '!ctags -R .'<CR><CR>:echo "Tags regenerated"<CR>
-
 " Fixlist
 nnoremap <leader>n :cnext<CR>
 nnoremap <leader>p :cprev<CR>
