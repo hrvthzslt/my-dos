@@ -1,0 +1,14 @@
+---
+- name: "Setup QBasic 45"
+  tags: qb45
+  block:
+    - name: "Check installer"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/qb45/Qb450.exe"
+      register: qb_exe
+
+    - name: "Download qb45"
+      ansible.builtin.get_url:
+        url: "https://archive.org/download/qb-450/Qb450.exe"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/qb45"
+      when: not qb_exe.stat.exists

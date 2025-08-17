@@ -21,6 +21,7 @@ make install
   - **Dos Shell** (Another Manager)
   - **Vim 7** (Text Editor, because it's funny)
   - **[Dosfetch](https://github.com/leahneukirchen/dosfetch)** (System Information)
+  - **QBasic 4.5** (Basic Interpreter and IDE)
 
 ## Uninstall
 
@@ -34,7 +35,7 @@ Will clean up the installation.
 
 The batch files for running external programs are located in `C:\BIN`, this path is added to the `PATH` environment variable. There is no `AUTOEXEC.BAT` file, its contents are defined in the `dosbox-staging.conf` file.
 
-When **dosbox staging** starts, it will provide drive `Y:\` for dos, `Z:\` for the internal programs. Then the autoexec part of the configuration will mount `~/dos/c` folder as the `C:\` drive, add the `C:\BIN` to the `PATH` and call dosfetch for bling-bling.
+When **dosbox staging** starts, it will provide drive `Y:\` for dos, `Z:\` for the internal programs. Then the autoexec part of the configuration will mount `~/dos/c` folder as the `C:\` drive, add the `C:\BIN` to the `PATH` and call dosfetch for bling-bling. **QBasic** is also added to the `PATH`, so all it's executable files are available.
 
 ## Basic Usage
 
