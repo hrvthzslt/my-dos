@@ -1,0 +1,21 @@
+---
+- name: "Setup QBasic 11"
+  tags: qb11
+  block:
+    - name: "Check executable"
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/dos/c/progs/qb11/QBASIC.EXE"
+      register: qb_exe
+
+    - name: "Download and unzip qb11"
+      ansible.builtin.unarchive:
+        src: "https://cors.archive.org/cors/msdos_qbasic_megapack/qbasic.zip"
+        dest: "{{ ansible_env.HOME }}/dos/c/progs/qb11"
+        remote_src: yes
+      when: not qb_exe.stat.exists
+
+    - name: "Copy QBASIC.EXE to bin as qb.exe"
+      ansible.builtin.copy:
+        src: "{{ ansible_env.HOME }}/dos/c/progs/qb11/QBASIC.EXE"
+        dest: "{{ ansible_env.HOME }}/dos/c/bin/qb.exe"
+        remote_src: yes
