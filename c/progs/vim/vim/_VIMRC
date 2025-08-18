@@ -95,6 +95,10 @@ nnoremap <leader>sf :find<Space>
 nnoremap <leader>sg :vimgrep // **<Left><Left><Left><Left>
 nnoremap gr :vimgrep /<C-R><C-W>/ **<CR>:copen<CR>
 
+" Run files by filetype
+autocmd FileType basic nnoremap <buffer> <leader>r :!qb /run %<CR>
+autocmd FileType vim nnoremap <buffer> <leader>r :source %<CR>
+
 " Fixlist
 nnoremap <leader>n :cnext<CR>
 nnoremap <leader>p :cprev<CR>
