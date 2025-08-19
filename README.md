@@ -21,6 +21,7 @@ make install
   - **Dos Shell** (Another Manager)
   - **Vim 7** (Text Editor, because it's funny)
   - **[Dosfetch](https://github.com/leahneukirchen/dosfetch)** (System Information)
+  - **QBasic 1.1** (Basic Interpreter)
 
 ## Uninstall
 
@@ -54,6 +55,7 @@ You can use the following custom commands:
 - `ds` - Will start Dos Shell.
 - `vim` - Will start Vim.
 - `df` - Will show system information.
+- `qb` - Starts QBasic.
 
 ### Games
 

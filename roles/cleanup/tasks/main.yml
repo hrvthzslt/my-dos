@@ -13,6 +13,7 @@
     - "{{ ansible_env.HOME }}/dos/c/progs/dosshell"
     - "{{ ansible_env.HOME }}/dos/c/progs/vim"
     - "{{ ansible_env.HOME }}/dos/c/progs/edit"
+    - "{{ ansible_env.HOME }}/dos/c/progs/qb11"
   register: progs_files_to_remove
 
 - name: Delete files
