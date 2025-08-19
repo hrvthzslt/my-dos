@@ -19,3 +19,9 @@
         src: "{{ ansible_env.HOME }}/dos/c/progs/qb11/QBASIC.EXE"
         dest: "{{ ansible_env.HOME }}/dos/c/bin/qb.exe"
         remote_src: yes
+
+    - name: "Copy QBASIC.HLP to bin"
+      ansible.builtin.copy:
+        src: "{{ ansible_env.HOME }}/dos/c/progs/qb11/QBASIC.HLP"
+        dest: "{{ ansible_env.HOME }}/dos/c/bin/QBASIC.HLP"
+        remote_src: yes
