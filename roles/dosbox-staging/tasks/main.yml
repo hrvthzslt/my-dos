@@ -10,14 +10,14 @@
 
     - name: download and unarchive
       ansible.builtin.unarchive:
-        src: https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.82.0/dosbox-staging-linux-x86_64-v0.82.0.tar.xz
+        src: https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.82.2/dosbox-staging-linux-x86_64-v0.82.2.tar.xz
         dest: /opt/
         remote_src: yes
       become: yes
 
     - name: symlink binary
       ansible.builtin.file:
-        src: /opt/dosbox-staging-linux-x86_64-0.82.0-9df43/dosbox
+        src: /opt/dosbox-staging-linux-x86_64-0.82.2-5e2ba/dosbox
         dest: /usr/local/bin/dosbox
         state: link
       become: yes
