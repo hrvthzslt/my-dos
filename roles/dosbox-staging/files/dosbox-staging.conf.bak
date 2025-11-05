@@ -413,7 +413,7 @@ cycledown  = 20
 
 voodoo                    = true
 voodoo_memsize            = 4
-voodoo_threads            = true
+voodoo_threads            = auto
 voodoo_bilinear_filtering = false
 
 [capture]
@@ -903,7 +903,7 @@ innovation_filter = off
 #                        off:       Don't filter the output.
 #                        <custom>:  Custom filter definition; see 'sb_filter' for details.
 
-pcspeaker           = discrete
+pcspeaker           = impulse
 pcspeaker_filter    = on
 tandy               = auto
 tandy_fadeout       = off
