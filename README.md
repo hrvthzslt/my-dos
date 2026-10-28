@@ -1,6 +1,6 @@
 # MY DOS
 
-My tribute for my own early days of computing, creating a x86 experience in **dosbox staging**, for **Debian** based distributions, automated with **Ansible**.
+My tribute for my own early days of computing, creating a x86 experience in **dosbox staging**, for **Debian** based distributions, and **Fedora**, automated with **Ansible**.
 
 ![Dos screen](assets/df-rs.png)
 

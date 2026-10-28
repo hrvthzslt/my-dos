@@ -1,0 +1,11 @@
+---
+- name: install
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - unzip
+    - libsdl2-2.0-0
+    - libsdl2-net-2.0-0
+    - libopusfile0
+  become: yes
+  tags: dependencies

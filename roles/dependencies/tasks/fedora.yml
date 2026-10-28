@@ -1,0 +1,11 @@
+---
+- name: install
+  ansible.builtin.dnf:
+    name:
+      - unzip
+      - SDL2
+      - SDL2_net
+      - opusfile
+    state: present
+  become: yes
+  tags: dependencies

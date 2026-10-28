@@ -1,11 +1,18 @@
 ---
-- name: install
-  ansible.builtin.apt:
-    name: "{{ item }}"
-  loop:
-    - unzip
-    - libsdl2-2.0-0
-    - libsdl2-net-2.0-0
-    - libopusfile0
-  become: yes
+- name: install Debian dependencies
+  ansible.builtin.include_tasks: debian.yml
   tags: dependencies
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: install Fedora dependencies
+  ansible.builtin.include_tasks: fedora.yml
+  tags: dependencies
+  when: ansible_facts['distribution'] == 'Fedora'
+
+- name: fail for unsupported operating systems
+  ansible.builtin.fail:
+    msg: "Dependency installation is not configured for {{ ansible_facts['distribution'] }}."
+  tags: dependencies
+  when:
+    - ansible_facts['os_family'] != 'Debian'
+    - ansible_facts['distribution'] != 'Fedora'
